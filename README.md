@@ -11,9 +11,9 @@ In this lab, you will create a Snowflake account, load sample data into a data w
 
 ## Getting Started
 
-### Sign up For Snowflake Trial
+### Sign up for Snowflake Trial
 
-Register for a free 30 day trial for Snowflake at [https://signup.snowflake.com/](https://signup.snowflake.com/). A credit card is not needed. The standard edition is sufficient. You can select any cloud provider. The screenshot below uses a Torono data centre of Microsoft Azure.
+Register for a free 30 day trial for Snowflake at [https://signup.snowflake.com/](https://signup.snowflake.com/). A credit card is not needed. The standard edition is sufficient. You can select any cloud provider. The screenshot below uses a Toronto data centre of Microsoft Azure.
 
 ![Snowflake signup](img/snowflake_signup.png)
 ![Snowflake signup2](img/snowflake_signup2.png)
@@ -22,9 +22,9 @@ Register for a free 30 day trial for Snowflake at [https://signup.snowflake.com/
 
 ### Initial Steps
 
-Snowflake can be accessed using any web browser in addition to JDBC ([details](https://docs.snowflake.com/en/user-guide/setup.html)). We will start connecting to snowflake using the user interface. 
+Snowflake can be accessed using any web browser in addition to JDBC ([details](https://docs.snowflake.com/en/user-guide/setup.html)). We will start connecting to Snowflake using the user interface. 
 
-**To connect, you need your account identifier that depends on both your user id and your cloud hosting location. ([Details](https://docs.snowflake.com/en/user-guide/admin-account-identifier.html)). This information will be sent to you when you register for an account.**
+**To connect, you need your account identifier that depends on both your user id and your cloud hosting location ([details](https://docs.snowflake.com/en/user-guide/admin-account-identifier.html)). This information will be sent to you when you register for an account.**
 
 If you selected Microsoft Azure Toronto, then your account identifier will be: `userid.canada-central.azure`. 
 
@@ -33,11 +33,11 @@ Example URL: `https://userid.canada-central.azure.snowflakecomputing.com`
 
 ### User Interface
 
-Once you login, the main user interface has links to your databases, worksheets, and dashboards. A **database** contains data stored on Snowflake. Note that each database may have multiple schemas (grouping of tables). For example, the sample TPC-H database is available as `snowflake_sample_data`. There are multiple scale factors (SF) for different sizes data. You can learn how to write queries using this sample data. Details on [using the sample data sets are available](https://docs.snowflake.com/en/user-guide/sample-data.html).
+Once you login, the main user interface has links to your databases, worksheets, and dashboards. A **database** contains data stored on Snowflake. Note that each database may have multiple schemas (grouping of tables). For example, the sample TPC-H database is available as `snowflake_sample_data`. There are multiple scale factors (SF) for different database sizes. You can learn how to write queries using this sample data. Details on [using the sample data sets are available](https://docs.snowflake.com/en/user-guide/sample-data.html).
 
 ![Snowflake main user interface](img/snowflake_main_ui.png)
 
-A **warehouse** is required to perform any operations on data. The list of warehouses is accessible under **Compute** then **Warehouses**. Trial accounts usually come with a created warehouse called **TESTWH**. However, if there are no warehouses defined, you can create one by clicing on the **+ Warehouse** button and then filling out the information. Use a **X-Small** warehouse to avoid using up a lot of your free credits.
+A **warehouse** is required to perform any operations on data. The list of warehouses is accessible under **Compute** then **Warehouses**. Trial accounts usually come with a created warehouse called **TESTWH**. However, if there are no warehouses defined, you can create one by clicking on the **+ Warehouse** button and then filling out the information. Use a **X-Small** warehouse to avoid using up a lot of your free credits.
 
 ![Snowflake create warehouse](img/snowflake_create_warehouse.png)
 
@@ -51,7 +51,7 @@ Try execute some SQL queries to get more familiar with the user interface.
 
 ### Loading a Data Set
 
-There are multiple ways to load data sets into Snowflake. For our simple data set, we will use the web interface. Larger data sets can be loaded directly from cloud providers or external databases. Our data will contain order data for a small company. The first step is to create a new database called `company`. Then use the SQL DDL provided in the file `data\order.ddl` to create the five tables (`Customer`, `Employee`, `Product`, `Orders`, `OrderedProduct`).
+There are multiple ways to load data sets into Snowflake. For our simple data set, we will use the web interface. Larger data sets can be loaded directly from cloud providers or external databases. Our data will contain order data for a small company. The first step is to create a new database called `lab`. Then use the SQL DDL provided in the file `data\order.ddl` to create the five tables (`Customer`, `Employee`, `Product`, `Orders`, `OrderedProduct`). [Documentation on loading from web interface](https://docs.snowflake.com/en/user-guide/data-load-web-ui.html).
 
 ![Create database](img/create_db.png)
 
@@ -67,15 +67,15 @@ Loading the data is done by going to the classic user interface. Click on `Datab
 
 ### JDBC
 
-Snowflake can be accessed using JDBC like any other database. The lab requires you to write four SQL queries on the data set that was loaded as well as the sample TPCH_SF1 data set. These queries will be executed using Java code (`src\test.java`). JUnit tests are in file `test\test.java`. 
+Snowflake can be accessed using JDBC like any other database. The lab requires you to write four SQL queries on the data set that was loaded as well as the sample TPCH_SF1 data set. These queries will be executed using Java code (`src\snowflake\Snowflake.java`). JUnit tests are in file `src\junit\TestSnowflake.java`. 
 
 **It is suggested to write the queries using the user interface then copy them into the Java code.** This is faster and allows you more experience using the Snowflake user interface.
 
-In our scenario, a company has bought out a smaller company and wants to produce reports on customers and orders across both organizations. The existing company database is the `TPCH_SF1` that is in the Snowflake sample data. The smaller company database is the customer and order tables loaded in the load data step.
+In our scenario, a company has bought out a smaller company and wants to produce reports on customers and orders across both organizations. The existing company database is the `TPCH_SF1` that is in the Snowflake sample data. The smaller company database is the '`LAB` database loaded in the load data step.
 
 ## Next Steps
 
-Once you have completed the lab queries, there is a lot more to Snowflake than is covered in the lab. Snowflake is used to analyzing large data and produce reports and dashboards. Check out the references and the Snowflake documentation for more information.
+Once you have completed the lab queries, there is a lot more to Snowflake than is covered in the lab. Snowflake is used to analyze large data and produce reports and dashboards. Check out the references and the Snowflake documentation for more information.
 
 ### References
 
@@ -83,6 +83,8 @@ Once you have completed the lab queries, there is a lot more to Snowflake than i
 - [Accessing using browser or JDBC](https://docs.snowflake.com/en/user-guide/setup.html)
 - [Quick tour of web interface](https://docs.snowflake.com/en/user-guide/snowflake-manager.html)
 - [Snowflake in 20 Minutes](https://docs.snowflake.com/en/user-guide/getting-started-tutorial.html)
+- [Loading data using web interface](https://docs.snowflake.com/en/user-guide/data-load-web-ui.html)
+- [Configuring JDBC driver](https://docs.snowflake.com/en/user-guide/jdbc-configure.html)
 
 ## Submission
 
