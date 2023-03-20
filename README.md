@@ -71,7 +71,7 @@ Snowflake can be accessed using JDBC like any other database. The lab requires y
 
 **It is suggested to write the queries using the user interface then copy them into the Java code.** This is faster and allows you more experience using the Snowflake user interface.
 
-In our scenario, a company has bought out a smaller company and wants to produce reports on customers and orders across both organizations. The existing company database is the `TPCH_SF1` that is in the Snowflake sample data. The smaller company database is the '`LAB` database loaded in the load data step.
+In our scenario, a company has bought out a smaller company and wants to produce reports on customers and orders across both organizations. The existing company database is the `TPCH_SF1` that is in the Snowflake sample data. The smaller company database is the `LAB` database loaded in the load data step.
 
 ## Next Steps
 
