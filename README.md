@@ -2,6 +2,8 @@
 
 This lab experiments with the Snowflake cloud data analysis system.
 
+**Note: Snowflake has recently make it harder to access the classic interface that allows easy file upload for a CSV file. To populate the data, just run the SQL DDL with insert statements available in the file: [full_order_ddl_with_inserts.ddl](data/full_order_ddl_with_inserts.ddl).**
+
 ## Data Analysis with Snowflake (10 marks)
 
 [Snowflake](https://www.snowflake.com/) is a cloud-based data analysis system that aims to simplify common data analysis tasks often performed on-premise using data warehouses. Snowflake allows users to store data sets in the cloud to produce a data lake consisting of many different data sources. Users then perform data analysis and data engineering to generate reports and data products. Since Snowflake is a cloud service, there is no on-premise installation and maintenance. As a cloud service, users are billed based on the amount of data and compute they use when performing their activities.
